@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.get('/test', (req, res) => {
-    res.send("Hey this is the text!");
-    return console.log("Site has been accessed!");
-})
+app.use(bodyParser.json());
+
+const routes = require('./routes/movieRoutes');
+
+app.use(routes);
 
 
 mongoose.connect('mongodb://localhost:27017/demo_cinema', {
