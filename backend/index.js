@@ -3,10 +3,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-app.get('/test', (req, res) => {
-    res.send("Hey this is the text!");
-    return console.log("Site has been accessed!");
-})
+const routes = require('./routes/movieRoutes');
+
+app.use(routes);
 
 
 mongoose.connect('mongodb://localhost:27017/demo_cinema', {
